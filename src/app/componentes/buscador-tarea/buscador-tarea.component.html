@@ -1,0 +1,26 @@
+<!-- src/app/componentes/buscador-tarea/buscador-tarea.component.html -->
+<div class="form-card">
+  <h3>Agregar Nueva Tarea y Filtrar</h3>
+  <div class="input-group">
+    <!-- Keyboard Filtering: Escucha Enter directamente -->
+    <input 
+      #inputTitulo
+      type="text" 
+      placeholder="Escribe el título y presiona Enter..." 
+      (keyup.enter)="emitirNuevaTarea(inputTitulo)"
+    />
+    <select (change)="onSeleccionarPrioridad($event)">
+      <option value="Media">Prioridad Media</option>      <option value="Alta">Prioridad Alta</option>
+      <option value="Baja">Prioridad Baja</option>
+    </select>
+    <button (click)="emitirNuevaTarea(inputTitulo)">Agregar</button>
+  </div>
+  <div class="search-group">
+    <label>Filtrar en tiempo real: </label>
+    <input 
+      type="text" 
+      placeholder="Buscar tarea por nombre..." 
+      (input)="onInputFiltrar($event)" 
+    />
+  </div>
+</div>
